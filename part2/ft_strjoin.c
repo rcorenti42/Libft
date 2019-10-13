@@ -14,17 +14,26 @@ char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*str;
 	size_t	i;
+	size_t	j;
 	size_t	size;
 
 	str = NULL;
 	i = 0;
+	j = 0;
 	size = ft_strlen(s1) + ft_strlen(s2);
 	if (!(str = malloc(sizeof(char) * size)))
 		return (NULL);
-	while (i < size)
+	while (i < ft_strlen(s1))
 	{
-		
+		str[i] = (char)s1[i];
 		i++;
 	}
+	while (j < ft_strlen(s2))
+	{
+		str[i] = (char)s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
 	return (str);
 }
