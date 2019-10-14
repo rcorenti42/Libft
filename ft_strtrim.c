@@ -1,5 +1,23 @@
 #include "libft.h"
 
+static size_t	ft_setcmp(const char c, const char *set)
+{
+	size_t	i;
+	size_t	j;
+
+	i = ft_strlen(set);
+	j = 0;
+	while (i > 0 && j == 0)
+	{
+		if (set[i] == c)
+			j++;
+		i--;
+	}
+	if (j == 0)
+		return (0);
+	return (1);
+}
+
 char		*ft_strtrim(const char *s1, const char *set)
 {
 	char	*str;
@@ -26,22 +44,4 @@ char		*ft_strtrim(const char *s1, const char *set)
 	}
 	str[k] = '\0';
 	return (str);
-}
-
-static size_t	ft_setcmp(const char c, const char *set)
-{
-	size_t	i;
-	size_t	j;
-
-	i = ft_strlen(set);
-	j = 0;
-	while (i > 0 && j == 0)
-	{
-		if (set[i] == c)
-			j++;
-		i--;
-	}
-	if (j == 0)
-		return (0);
-	return (1);
 }

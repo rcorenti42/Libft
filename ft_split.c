@@ -5,6 +5,8 @@ static size_t	ft_nbrwrd(const char *s, char c)
 	size_t	i;
 	size_t	nbr;
 
+	i = 0;
+	nbr = 0;
 	while (s[i])
 	{
 		while (s[i] == c)
@@ -39,10 +41,12 @@ char		**ft_split(const char *s, char c)
 {
 	size_t	i;
 	size_t	j;
+	size_t	k;
 	char	**tab;
 
 	i = 0;
 	j = 0;
+	k = 0;
 	tab = NULL;
 	if (!(tab = malloc(sizeof(char *) * ft_nbrwrd(s, c) + 1)))
 		return (NULL);
