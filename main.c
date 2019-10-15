@@ -378,30 +378,30 @@ static int		test_strnstr(void)
 static int		test_atoi(void)
 {
 	int		reussi = 0;
-	if (atoi("\n\t\v-898") == atoi("\n\t\v-898"))
+	if (ft_atoi("\n\t\v-898") == atoi("\n\t\v-898"))
 		reussi++;
 	else
-		txt_error_info("if (atoi(\"\\n\\t\\v-898\") == atoi(\"\\n\\t\\v-898\"))");
-	if (atoi("9475638") == atoi("9475638"))
+		txt_error_info("if (ft_atoi(\"\\n\\t\\v-898\") == atoi(\"\\n\\t\\v-898\"))");
+	if (ft_atoi("9475638") == atoi("9475638"))
 		reussi++;
 	else
-		txt_error_info("if (atoi(\"9475638\") == atoi(\"9475638\"))");
-	if (atoi("++9475638") == atoi("++9475638"))
+		txt_error_info("if (ft_atoi(\"9475638\") == atoi(\"9475638\"))");
+	if (ft_atoi("++9475638") == atoi("++9475638"))
 		reussi++;
 	else
-		txt_error_info("if (atoi(\"++9475638\") == atoi(\"++9475638\"))");
-	if (atoi("egeg845") == atoi("egeg845"))
+		txt_error_info("if (ft_atoi(\"++9475638\") == atoi(\"++9475638\"))");
+	if (ft_atoi("egeg845") == atoi("egeg845"))
 		reussi++;
 	else
-		txt_error_info("if (atoi(\"egeg845\") == atoi(\"egeg845\"))");
-	if (atoi("97465n45") == atoi("97465n45"))
+		txt_error_info("if (ft_atoi(\"egeg845\") == atoi(\"egeg845\"))");
+	if (ft_atoi("97465n45") == atoi("97465n45"))
 		reussi++;
 	else
-		txt_error_info("if (atoi(\"97465n45\") == atoi(\"97465n45\"))");
-	if (atoi("974645") == atoi("974645"))
+		txt_error_info("if (ft_atoi(\"97465n45\") == atoi(\"97465n45\"))");
+	if (ft_atoi("974645") == atoi("974645"))
 		reussi++;
 	else
-		txt_error_info("if (atoi(\"974645\") == atoi(\"974645\"))");
+		txt_error_info("if (ft_atoi(\"974645\") == atoi(\"974645\"))");
 	return (reussi);
 }
 
@@ -493,6 +493,87 @@ static int		test_tolower(void)
 			reussi++;
 		i++;
 	}
+	return (reussi);
+}
+
+static int 		test_strchr(void)
+{
+	int		erreur = 0;
+	int		reussi = 0;
+
+	char str[] = "http://www.tutorialspoint.com";
+	char ch = ':';
+	char *ret, *ret2, *ret3, *ret4;
+
+	char str2[] = "http://www.tutorialspoint.com";
+	char ch2 = ':';
+
+	ret = strchr(str, ch);
+	ret2 = ft_strchr(str2, ch2);
+	erreur = strcmp(ret, ret2);
+	if (!erreur)
+		reussi++;
+	else
+		txt_error_info("strcmp(ret, ret2)");
+	char stru[] = "http://www.tutorialspoint.com";
+	char chu = 'm';
+
+	char stri[] = "http://www.tutorialspoint.com";
+	char chi = 'm';
+
+	ret3 = strchr(stru, chu);
+	ret4 = ft_strchr(stri, chi);
+	erreur = strcmp(ret3, ret4);
+	if (!erreur)
+		reussi++;
+	else
+		txt_error_info("strcmp(ret3, ret4)");
+	return (reussi);
+}
+
+static int 		test_strlcpy(void)
+{
+	int		reussi = 0;
+	char src[50], dest[50], src2[50], dest2[50];
+
+	strcpy(src,  "This is source");
+	strcpy(dest, "This is destination");
+	strcpy(src2,  "This is source");
+	strcpy(dest2, "This is destination");
+	if (ft_strlcpy(dest, src, 3) == strlcpy(dest2, src2, 3))
+		reussi++;
+	else
+		txt_error_info("strlcat(dest, src, 3) == strlcat(dest2, src2, 3)");
+	strcpy(src,  "Ththth");
+	strcpy(dest, "Ththth");
+	strcpy(src2,  "Ththth");
+	strcpy(dest2, "Ththth");
+	if (ft_strlcpy(dest, src, 15) == strlcpy(dest2, src2, 15))
+		reussi++;
+	else
+		txt_error_info("strlcat(dest, src, 15) == strlcat(dest2, src2, 15)");
+	return (reussi);
+}
+
+static int 		test_strncmp(void)
+{
+	int		reussi = 0;
+	if (ft_strncmp("_pp\0mm2", "_pp\0mm2", 5) == strncmp("_pp\0mm2", "_pp\0mm2", 5))
+		reussi++;
+	else
+		txt_error_info("ft_strncmp(\"_pp\\0mm2\", \"_pp\\0mm2\", 5) == strncmp(\"_pp\\0mm2\", \"_pp\\0mm2\", 5)");
+	if (ft_strncmp("\0\0\0", "\0\0\0", 3) == strncmp("\0\0\0", "\0\0\0", 3))
+		reussi++;
+	else
+		txt_error_info("ft_strncmp(\"\\0\\0\\0\", \"\\0\\0\\0\", 3) == strncmp(\"\\0\\0\\0\", \"\\0\\0\\0\", 3)");
+	if (ft_strncmp("", "", 0) == strncmp("", "", 0))
+		reussi++;
+	else
+		txt_error_info("ft_strncmp(\"\", \"\", 0) == strncmp(\"\", \"\", 0)");
+	if (ft_strncmp("testosterogne.", "testosterone.", 5) == strncmp("testosterogne.", "testosterone.", 5))
+		reussi++;
+	else
+		txt_error_info("ft_strncmp(\"testosterogne.\", \"testosterone.\", 5) == strncmp(\"testosterogne.\", \"testosterone.\", 5)");
 	return (reussi);
 }
 
@@ -625,27 +706,23 @@ static void		Start(void)
 		txt_good("ft_tolower..", nbr, 300);
 	else
 		txt_error("ft_tolower...Total Error !");
-}
-/*
- *
- *
- *
- P
- A
- R
- T
- 2
- *
- *
- *
-*/
-		/*******strsplit*****
-	if ((nbr = test_strsplit()))
-		txt_good("ft_strsplit..", nbr, 6);
+		/*******strchr******/
+	if ((nbr = test_strchr()))
+		txt_good("ft_strchr..", nbr, 2);
 	else
-		txt_error("ft_strsplit...Total Error !");
+		txt_error("ft_strchr...Total Error !");
+		/*******strlcpy******/
+	if ((nbr = test_strlcpy()))
+		txt_good("ft_strlcpy..", nbr, 2);
+	else
+		txt_error("ft_strlcpy...Total Error !");
+		/*******strncmp******/
+	if ((nbr = test_strncmp()))
+		txt_good("ft_strncmp..", nbr, 4);
+	else
+		txt_error("ft_strncmp...Total Error !");
+	ft_putstr("\n\nATTENTION !!!\n\nMAQUE TEST CALLOC + PART 2 !!!\n\n");
 }
-*/
 
 int		main(void)
 {
