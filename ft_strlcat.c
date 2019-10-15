@@ -39,5 +39,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
     dst[i + j] = '\0';
 	if (size == 1 || *src == 0)
 		*dst = '\0';
-	return (k + m);
+	return (ft_strlen(src));
 }

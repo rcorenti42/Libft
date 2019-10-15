@@ -19,6 +19,8 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	unsigned char	*s;
 
 	i = 0;
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
 	while (i < n)
 	{
 		if ((unsigned char)c == s[i])

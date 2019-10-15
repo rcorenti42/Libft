@@ -20,6 +20,11 @@ static int		ft_strcmp(const char *s1, const char *s2)
 	return (strcmp(s1, s2));
 }
 
+static void		ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 static void		ft_putstr(char *str)
 {
 	int i = 0;
@@ -31,10 +36,21 @@ static void		ft_putstr(char *str)
 	}
 }
 
-static void		ft_putnbr(int i)
+static void		ft_putnbr(int n)
 {
-	i = i + 48;
-	write(1, &i, 1);
+	unsigned int nb = n;
+	if (n < 0)
+	{
+		ft_putchar('-');
+	    nb = -n;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
 }
 
 static void		txt_error_info(char *s)

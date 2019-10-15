@@ -1,13 +1,66 @@
 #include "libft.h"
 
-char	*ft_itoa(int n)
+static int	ft_count(int n)
 {
-	int	neg;
-	int	i;
+	int		i;
+	int		nbr;
+
+	i = 0;
+	nbr = n;
+	while (nbr != 0)
+	{
+		nbr /= 10;
+		i++;
+	}
+	return (i);
+}
+
+static char	*ft_reverse(char *str)
+{
+	int		i;
+	int		j;
+	char	c;
+
+	i = 0;
+	j = 0;
+	while (str[j])
+		j++;
+	j--;
+	while (i < j)
+	{
+		c = str[i];
+		str[i] = str[j];
+		str[j] = c;
+		i++;
+		j--;
+	}
+	return (str);
+}
+
+char		*ft_itoa(int n)
+{
+	int		nbr;
+	int		i;
 	char	*str;
 
-	neg = 0;
+	nbr = n;
 	i = 0;
 	str = NULL;
-	
+	if (!(str = malloc(sizeof(char) * ft_count(n) + (n < 0 ? 2 : 1))))
+		return (NULL);
+	if (n < 0)
+		nbr = -nbr;
+	while (nbr > 0)
+	{
+		str[i] = nbr % 10 + '0';
+		nbr /= 10;
+		i++;
+	}
+	if (n < 0)
+	{
+		str[i] = '-';
+		i++;
+	}
+	str[i] = '\0';
+	return (ft_reverse(str));
 }
