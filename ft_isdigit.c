@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 12:53:53 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/11 12:53:55 by rcorenti         ###   ########.fr       */
+/*   Created: 2019/10/16 01:34:39 by rcorenti          #+#    #+#             */
+/*   Updated: 2019/10/16 01:34:57 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

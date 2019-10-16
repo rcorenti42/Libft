@@ -5,26 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 12:51:52 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/11 17:45:43 by rcorenti         ###   ########.fr       */
+/*   Created: 2019/10/15 22:55:40 by rcorenti          #+#    #+#             */
+/*   Updated: 2019/10/15 23:20:46 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-    size_t          i;
-    unsigned char   *str;
+	size_t			i;
+	unsigned char	*str;
 
-    i = 0;
-    str = (unsigned char *)s;
-    if (n != 0)
-    {
-        while (i < n)
-        {
-            str[i] = '\0';
-            i++;
-        }
-    }
+	i = 0;
+	str = (unsigned char *)s;
+	if (n != 0)
+	{
+		while (i < n)
+		{
+			str[i] = '\0';
+			i++;
+		}
+	}
 }

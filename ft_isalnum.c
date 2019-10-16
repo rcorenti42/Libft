@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 12:53:08 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/11 12:53:11 by rcorenti         ###   ########.fr       */
+/*   Created: 2019/10/16 01:35:31 by rcorenti          #+#    #+#             */
+/*   Updated: 2019/10/16 01:35:39 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    if (c >= 'a' && c <= 'z')
-        return (1);
-    if (c >= 'A' && c <= 'Z')
-        return (1);
-    return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
 }

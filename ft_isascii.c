@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 12:53:33 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/11 12:53:37 by rcorenti         ###   ########.fr       */
+/*   Created: 2019/10/16 01:36:11 by rcorenti          #+#    #+#             */
+/*   Updated: 2019/10/16 01:36:20 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
-    if (c >= 0 && c <= 127)
-        return (1);
-    return (0);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

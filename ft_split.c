@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/16 02:26:45 by rcorenti          #+#    #+#             */
+/*   Updated: 2019/10/16 06:42:28 by rcorenti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	ft_nbrwrd(const char *s, char c)
@@ -19,7 +31,7 @@ static size_t	ft_nbrwrd(const char *s, char c)
 	return (nbr);
 }
 
-static char	*ft_memstr(const char *s, size_t n)
+static char		*ft_memstr(const char *s, size_t n)
 {
 	char	*str;
 	size_t	i;
@@ -37,7 +49,7 @@ static char	*ft_memstr(const char *s, size_t n)
 	return (str);
 }
 
-char		**ft_split(const char *s, char c)
+char			**ft_split(const char *s, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -45,7 +57,6 @@ char		**ft_split(const char *s, char c)
 	char	**tab;
 
 	i = 0;
-	j = 0;
 	k = 0;
 	tab = NULL;
 	if (!(tab = malloc(sizeof(char *) * ft_nbrwrd(s, c) + 1)))

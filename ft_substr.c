@@ -1,39 +1,33 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 16:06:10 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/11 19:49:15 by rcorenti         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-char	*ft_substr(const char *s1, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	size_t		size;
-	size_t		i;
-	char		*str;
-	unsigned int	k;
+	char *newchain;
+	size_t x;
+	int temp;
+	size_t ssize;
 
-	size = ft_strlen(s1) - (size_t)start;
-	i = 0;
-	str = NULL;
-	k = start;
-	if (start <= 0 && len <= 0)
+	x = 0;
+	temp = 0;
+	ssize = 0;
+	while (s[ssize])
+		ssize++;
+	if(len == 0 || start > ssize || s[ssize])
 		return (NULL);
-	if (size > len)
-		size = len;
-	if (!(str = malloc(sizeof(char) * size)))
+
+	if (len <= ssize - start)
+		temp = (int)len + 1;
+	if (len > ssize - start)
+		temp = (int)ssize - start;
+	if (!(newchain = malloc(sizeof(char) * temp)))
 		return (NULL);
-	while (i < size)
+	while(len > 0 && s[x + start])
 	{
-		str[i] = s1[k];
-		k++;
-		i++;
+		newchain[x] = s[x + start - 1];
+		x++;
+		len--;
 	}
-	return (str);
+	newchain[x + start] = '\0';
+	return (newchain);
 }
+

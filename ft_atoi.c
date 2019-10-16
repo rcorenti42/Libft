@@ -6,46 +6,34 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:18:27 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/11 12:52:21 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/10/16 01:32:02 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int x;
-	long neg;
-	long nb;
+	int		x;
+	int		neg;
+	long	nb;
 
 	x = 0;
 	neg = 0;
 	nb = 0;
-	while(str[x] == '\t' || str[x] == '\v'
+	while (str[x] == '\t' || str[x] == '\v'
 			|| str[x] == '\n' || str[x] == '\r' || str[x] == '\f'
 			|| str[x] == ' ')
 		x++;
+	if (str[x] == '-')
+		neg++;
 	if (str[x] == '-' || str[x] == '+')
-	{
-		if (str[x] == '-')
-			neg = 2;
 		x++;
-	}
-	while(str[x] >= '0' && str[x] <= '9')
+	while (str[x] >= '0' && str[x] <= '9')
 	{
 		if ((nb > ((9223372036854775807 / 10) - str[x]))
 		|| (nb < ((-9223372036854775807 + 1) / 10) - str[x]))
-		{
-			if (neg != 2)
-				return (-1);
-			else
-				return(0);
-		}
-		nb = nb * 10;
-		nb = nb + str[x] - '0';
+			return (neg > 0 ? -1 : 0);
+		nb = nb * 10 + (str[x] - '0');
 		x++;
 	}
-	if (!(neg == 2))
-	{
-		return((int)nb);
-	}
-	return((int)-nb);
+	return (neg > 0 ? (int)-nb : (int)nb);
 }

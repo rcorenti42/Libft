@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/16 02:24:53 by rcorenti          #+#    #+#             */
+/*   Updated: 2019/10/16 06:41:29 by rcorenti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	ft_setcmp(const char c, const char *set)
@@ -18,7 +30,7 @@ static size_t	ft_setcmp(const char c, const char *set)
 	return (1);
 }
 
-char		*ft_strtrim(const char *s1, const char *set)
+char			*ft_strtrim(const char *s1, const char *set)
 {
 	char	*str;
 	size_t	i;
