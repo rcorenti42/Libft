@@ -60,6 +60,16 @@ char		*ft_itoa(int n)
 	str = NULL;
 	if (!(str = malloc(sizeof(char) * ft_count(n) + (n < 0 ? 2 : 1))))
 		return (NULL);
+	if (n == 0)
+	{
+		str[i] = '0';
+		i++;
+	}
+	if (n == -2147483648)
+	{
+		str = "-2147483648\0";
+		return (str);
+	}
 	if (n < 0)
 		nbr = -nbr;
 	while (nbr > 0)
