@@ -41,7 +41,6 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
 char	**ft_split(const char *s, char c);
 char	*ft_itoa(int c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
@@ -52,5 +51,11 @@ void	ft_putnbr_fd(int c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(const char *s, const char *set);
+
+typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list;
 
 #endif
