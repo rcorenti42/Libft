@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:32:25 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/11 18:07:21 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/10/26 15:19:00 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
-void    *ft_calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -51,13 +51,5 @@ void	ft_putnbr_fd(int c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(const char *s, const char *set);
-
-typedef struct s_list
-{
-void *content;
-struct s_list *next;
-} t_list;
-
-t_list	*ft_lstnew(void *content);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 02:24:53 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/16 06:41:29 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/10/26 16:07:59 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ static size_t	ft_setcmp(const char c, const char *set)
 	return (1);
 }
 
+static	char	*ft_zero(char *str)
+{
+	if (!(str = malloc(sizeof(char) * 1)))
+		return (NULL);
+	str[0] = '\0';
+	return (str);
+}
+
 char			*ft_strtrim(const char *s1, const char *set)
 {
 	char	*str;
@@ -38,7 +46,7 @@ char			*ft_strtrim(const char *s1, const char *set)
 	size_t	k;
 
 	i = 0;
-	k = 0;
+	k = -1;
 	str = NULL;
 	while (ft_setcmp(s1[i], set) == 1)
 		i++;
@@ -49,18 +57,11 @@ char			*ft_strtrim(const char *s1, const char *set)
 			j--;
 		if (!(str = malloc(sizeof(char) * (j - i + 2))))
 			return (NULL);
-		while (k < j - i + 1)
-		{
+		while (++k < j - i + 1)
 			str[k] = s1[i + k];
-			k++;
-		}
-	str[k] = '\0';
+		str[k] = '\0';
 	}
-	else
-	{
-		if (!(str = malloc(sizeof(char) * 1)))
-			return (NULL);
-		str[0] = '\0';
-	}
+	else if (!(str = ft_zero(str)))
+		return (NULL);
 	return (str);
 }

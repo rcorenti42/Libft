@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:13:19 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/15 23:23:11 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/10/26 16:50:36 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	i = 0;
 	s = (unsigned char *)src;
 	d = (unsigned char *)dest;
+	if (d == NULL && s == NULL)
+		return (NULL);
 	while (i < n)
 	{
 		str[i] = s[i];
