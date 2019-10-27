@@ -16,13 +16,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	int		i;
 	int		x;
-	size_t	k;
 
 	x = 0;
-	k = n;
-	if (k == 0)
+	if (n == 0)
 		return (0);
-	while (k != 0)
+	while (n != 0 && (s1[x] || s2[x]))
 	{
 		if (s1[x] != s2[x])
 		{
@@ -33,7 +31,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 				return (1);
 			return (0);
 		}
-		k--;
+		n--;
 		x++;
 	}
 	return (0);
