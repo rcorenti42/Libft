@@ -12,68 +12,48 @@
 
 #include "libft.h"
 
-static int	ft_count(int n)
+static	int		ft_get_size(int number)
 {
-	int		i;
-	int		nbr;
+	int		count;
 
-	i = 0;
-	nbr = n;
-	while (nbr != 0)
+	count = 0;
+	if (number < 0)
+		number = -number;
+	while (number > 9)
 	{
-		nbr /= 10;
-		i++;
+		number = number / 10;
+		count++;
 	}
-	return (i);
+	count++;
+	return (count);
 }
 
-static char	*ft_reverse(char *str)
+char			*ft_itoa(int n)
 {
-	int		i;
-	int		j;
-	char	c;
+	int		size;
+	int		neg;
+	char	*tab;
 
-	i = 0;
-	j = 0;
-	while (str[j])
-		j++;
-	j--;
-	while (i < j)
-	{
-		c = str[i];
-		str[i] = str[j];
-		str[j] = c;
-		i++;
-		j--;
-	}
-	return (str);
-}
-
-char		*ft_itoa(int n)
-{
-	int		nbr;
-	int		i;
-	char	*str;
-
-	nbr = n;
-	i = 0;
-	str = NULL;
-	if (!(str = malloc(sizeof(char) * ft_count(n) + (n < 0 ? 2 : 1))))
-		return (NULL);
-	if (n == 0)
-		str[i++] = '0';
+	size = ft_get_size(n);
+	neg = 0;
 	if (n == -2147483648)
-		return (str = "-2147483648\0");
+		return (ft_strdup("-2147483648"));
 	if (n < 0)
-		nbr = -nbr;
-	while (nbr > 0)
 	{
-		str[i] = nbr % 10 + '0';
-		nbr /= 10;
-		i++;
+		n = -n;
+		neg = 1;
 	}
-	if (n < 0)
-		str[i++] = '-';
-	str[i] = '\0';
-	return (ft_reverse(str));
+	if (!(tab = (char *)malloc(sizeof(char) * (size + 1 + neg))))
+		return (NULL);
+	if (neg)
+		tab[0] = '-';
+	tab[size + 1] = '\0';
+	while (size)
+	{
+		tab[size - (neg ? 0 : 1)] = n % 10 + '0';
+		n = n / 10;
+		size--;
+	}
+	return (tab);
 }
+

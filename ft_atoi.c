@@ -10,30 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	int		x;
-	int		neg;
-	long	nb;
+#include "libft.h"
 
-	x = 0;
-	neg = 0;
-	nb = 0;
-	while (str[x] == '\t' || str[x] == '\v'
-			|| str[x] == '\n' || str[x] == '\r' || str[x] == '\f'
-			|| str[x] == ' ')
-		x++;
-	if (str[x] == '-')
-		neg++;
-	if (str[x] == '-' || str[x] == '+')
-		x++;
-	while (str[x] >= '0' && str[x] <= '9')
-	{
-		if ((nb > ((9223372036854775807 / 10) - str[x]))
-		|| (nb < ((-9223372036854775807 + 1) / 10) - str[x]))
-			return (neg > 0 ? -1 : 0);
-		nb = nb * 10 + (str[x] - '0');
-		x++;
-	}
-	return (neg > 0 ? (int)-nb : (int)nb);
+int    ft_atoi(const char *str)
+{
+    long int    c;
+    long int    d;
+    int            nb;
+
+    c = 0;
+    d = 0;
+    nb = 0;
+    while (str[c] == '\t' || str[c] == '\n' || str[c] == '\v' ||
+    str[c] == '\f' || str[c] == '\r' || str[c] == ' ')
+        c++;
+    if (str[c] == '-' || str[c] == '+')
+    {
+        if (str[c] == '-')
+            d++;
+        c++;
+    }
+    while ('0' <= str[c] && str[c] <= '9')
+    {
+        nb = nb * 10 + str[c] - '0';
+        c++;
+    }
+    if (d % 2 == 1)
+        nb = nb * -1;
+    return (nb);
 }

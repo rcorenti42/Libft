@@ -19,6 +19,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	int		temp;
 	size_t	ssize;
 
+	newchain = NULL;
 	x = 0;
 	ssize = 0;
 	while (s[ssize])
@@ -37,6 +38,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		x++;
 		len--;
 	}
-	newchain[x + start] = '\0';
+	newchain[x] = '\0';
 	return (newchain);
 }
