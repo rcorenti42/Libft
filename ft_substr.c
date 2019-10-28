@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:23:20 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/26 15:26:21 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:10:16 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	int		temp;
 	size_t	ssize;
 
-	newchain = NULL;
 	x = 0;
 	ssize = 0;
 	while (s[ssize])
