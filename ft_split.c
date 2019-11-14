@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 02:26:45 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/16 06:42:28 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/11/14 22:03:34 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,14 @@ char			**ft_split(const char *s, char c)
 			i++;
 		if (i > j)
 		{
-			tab[k] = ft_memstr(s + j, i - j);
+			if ((tab[k] = ft_memstr(s + j, i - j)) == NULL)
+			{
+				while (--k)
+					free(tab[k]);
+				free(tab[0]);
+				free(tab);
+				return (NULL);
+			}
 			k++;
 		}
 	}
