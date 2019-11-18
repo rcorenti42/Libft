@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/18 16:00:02 by rcorenti          #+#    #+#             */
+/*   Updated: 2019/11/18 16:05:35 by rcorenti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int		ft_nbrwrd(const char *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] != c && s[i] != 0)
@@ -20,13 +32,14 @@ static void		ft_freetab(char **tab, int i)
 static int		ft_memstr(int x, char c, char **tab, const char *s)
 {
 	int	i;
-	int z;
+	int	z;
 
-	i = -1;
-	while (++i < x)
+	i = 0;
+	while (i < x)
 	{
-		while (*s++ == c)
-			;
+		while (*s == c)
+			s++;
+		s++;
 		if (!(tab[i] = malloc(sizeof(char) * ft_nbrwrd(--s, c) + 1)))
 		{
 			ft_freetab(tab, i);
@@ -36,6 +49,7 @@ static int		ft_memstr(int x, char c, char **tab, const char *s)
 		while (*s != '\0' && *s != c)
 			tab[i][z++] = *s++;
 		tab[i][z] = '\0';
+		i++;
 	}
 	return (1);
 }
@@ -46,13 +60,16 @@ char			**ft_split(const char *s, char c)
 	int		i;
 	int		x;
 
+	i = 0;
 	x = 0;
 	if (s == NULL)
 		return (NULL);
-	i = -1;
-	while (s[++i])
+	while (s[i])
+	{
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			x++;
+		i++;
+	}
 	if (!(tab = malloc(sizeof(char *) * (x + 1))))
 		return (NULL);
 	tab[x] = NULL;
