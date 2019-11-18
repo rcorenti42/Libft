@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 06:42:45 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/28 19:07:50 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:16:22 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	int		ft_get_size(int number)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	if (number < 0)
@@ -47,7 +47,7 @@ char			*ft_itoa(int n)
 		return (NULL);
 	if (neg)
 		tab[0] = '-';
-	tab[size + 1] = '\0';
+	tab[size + neg] = '\0';
 	while (size)
 	{
 		tab[size - (neg ? 0 : 1)] = n % 10 + '0';
