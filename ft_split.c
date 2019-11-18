@@ -1,86 +1,62 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 02:26:45 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/11/14 22:03:34 by rcorenti         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-static size_t	ft_nbrwrd(const char *s, char c)
+static int		ft_nbrwrd(const char *s, char c)
 {
-	size_t	i;
-	size_t	nbr;
+	int i;
 
 	i = 0;
-	nbr = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != '\0')
-			nbr++;
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	return (nbr);
+	while (s[i] != c && s[i] != 0)
+		i++;
+	return (i);
 }
 
-static char		*ft_memstr(const char *s, size_t n)
+static void		ft_freetab(char **tab, int i)
 {
-	char	*str;
-	size_t	i;
+	while (i)
+		free(&tab[i--]);
+	free(tab);
+}
 
-	str = NULL;
-	i = 0;
-	if (!(str = malloc(sizeof(char) * n + 1)))
-		return (NULL);
-	while (s[i] && i < n)
+static int		ft_memstr(int x, char c, char **tab, const char *s)
+{
+	int	i;
+	int z;
+
+	i = -1;
+	while (++i < x)
 	{
-		str[i] = s[i];
-		i++;
+		while (*s++ == c)
+			;
+		if (!(tab[i] = malloc(sizeof(char) * ft_nbrwrd(--s, c) + 1)))
+		{
+			ft_freetab(tab, i);
+			return (0);
+		}
+		z = 0;
+		while (*s != '\0' && *s != c)
+			tab[i][z++] = *s++;
+		tab[i][z] = '\0';
 	}
-	str[n] = '\0';
-	return (str);
+	return (1);
 }
 
 char			**ft_split(const char *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
 	char	**tab;
+	int		i;
+	int		x;
 
-	i = 0;
-	k = 0;
-	tab = NULL;
-	if (!(tab = malloc(sizeof(char *) * ft_nbrwrd(s, c) + 1)))
+	x = 0;
+	if (s == NULL)
 		return (NULL);
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		j = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (i > j)
-		{
-			if ((tab[k] = ft_memstr(s + j, i - j)) == NULL)
-			{
-				while (--k)
-					free(tab[k]);
-				free(tab[0]);
-				free(tab);
-				return (NULL);
-			}
-			k++;
-		}
-	}
-	tab[k] = NULL;
+	i = -1;
+	while (s[++i])
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			x++;
+	if (!(tab = malloc(sizeof(char *) * (x + 1))))
+		return (NULL);
+	tab[x] = NULL;
+	if (ft_memstr(x, c, tab, s) == 0)
+		return (NULL);
 	return (tab);
 }
