@@ -19,19 +19,16 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	int		temp;
 	size_t	ssize;
 
+	newchain = NULL;
 	x = 0;
-	ssize = 0;
-	while (s[ssize])
-		ssize++;
+	ssize = ft_strlen(s);
 	if (start > ssize || s[ssize])
-		return (NULL);
-	if (len <= ssize - start)
-		temp = (int)len + 1;
-	if (len > ssize - start)
-		temp = (int)ssize - start;
+		temp = 1;
+	(len > ssize - start) ? (temp = (int)ssize - start)
+		: (temp = (int)len + 1);
 	if (!(newchain = malloc(sizeof(char) * temp)))
 		return (NULL);
-	while (len > 0 && s[x + start])
+	while (len > 0 && s[x + start] && (!(start > ssize || s[ssize])))
 	{
 		newchain[x] = s[x + start];
 		x++;
