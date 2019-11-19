@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		ft_nbrwrd(const char *s, char c)
+static int		ft_letters(const char *s, char c)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ static int		ft_memstr(int x, char c, char **tab, const char *s)
 		while (*s == c)
 			s++;
 		s++;
-		if (!(tab[i] = malloc(sizeof(char) * ft_nbrwrd(--s, c) + 1)))
+		if (!(tab[i] = malloc(sizeof(char) * ft_letters(--s, c) + 1)))
 		{
 			ft_freetab(tab, i);
 			return (0);
