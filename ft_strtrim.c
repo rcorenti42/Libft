@@ -48,6 +48,8 @@ char			*ft_strtrim(const char *s1, const char *set)
 	i = 0;
 	k = -1;
 	str = NULL;
+	if (!(s1))
+		return (NULL);
 	while (ft_setcmp(s1[i], set) == 1)
 		i++;
 	if (s1[i])

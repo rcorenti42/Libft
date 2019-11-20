@@ -21,6 +21,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 	newchain = NULL;
 	x = 0;
+	if (!(s))
+	return (NULL);
 	ssize = ft_strlen(s);
 	if (start > ssize || s[ssize])
 		temp = 1;
