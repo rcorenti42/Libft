@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:32:25 by rcorenti          #+#    #+#             */
-/*   Updated: 2019/10/26 15:19:00 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/30 03:41:49 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	**ft_split(const char *s, char c);
 char	*ft_itoa(int c);
+char	*ft_uitoa(unsigned int u);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putchar_fd(char c, int fd);
