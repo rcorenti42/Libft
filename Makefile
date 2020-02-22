@@ -1,18 +1,22 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/11 17:32:43 by rcorenti          #+#    #+#              #
-#    Updated: 2019/10/16 07:32:45 by rcorenti         ###   ########.fr        #
+#    Created: 2020/01/29 02:55:15 by rcorenti          #+#    #+#              #
+#    Updated: 2020/02/13 23:41:49 by rcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAG = -Wall -Wextra -Werror
-
 NAME = libft.a
+
+FLAGS = -Wall -Wextra -Werror
+
+DIR_S = srcs
+HEADER = includes
+DIR_O = obj
 
 SRC = ft_atoi.c \
 	ft_bzero.c \
@@ -35,6 +39,7 @@ SRC = ft_atoi.c \
 	ft_strlcpy.c \
 	ft_strlen.c \
 	ft_strncmp.c \
+	ft_strncpy.c \
 	ft_strnstr.c \
 	ft_strrchr.c \
 	ft_substr.c \
@@ -43,6 +48,7 @@ SRC = ft_atoi.c \
 	ft_strtrim.c \
 	ft_split.c \
 	ft_itoa.c \
+	ft_uitoa.c \
 	ft_strmapi.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
@@ -51,21 +57,24 @@ SRC = ft_atoi.c \
 
 OBJ = $(SRC:.c=.o)
 
+SRCS = $(addprefix $(DIR_S)/, $(SRC))
+OBJS = $(addprefix $(DIR_O)/, $(OBJ))
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
-%.o: %.c
-	@gcc $(FLAG) -c $< -o $@
+$(DIR_O)/%.o: $(DIR_S)/%.c
+	@mkdir -p $(DIR_O)
+	@gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	@rm -f $(OBJ)
+	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
 
 fclean: clean
 	@rm -f $(NAME)
 
-re: fclean all
-
-.PHONY: all, clean, fclean, re
+re:	fclean all
